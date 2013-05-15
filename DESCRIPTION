@@ -1,0 +1,18 @@
+Package: knitPost
+Title: knitPst
+Version: 0.1
+Author: Carson Sievert <sievert@iastate.edu>
+Maintainer: Carson Sievert <sievert@iastate.edu>
+Description: Helper function(s) for knitting blog posts
+License: MIT
+Suggests:
+    slidify
+Depends:
+    R (>= 2.15.1),
+    Cairo,
+    animation,
+    knitr,
+    hexbin,
+    RColorBrewer
+Collate:
+    'KnitPost.R'
