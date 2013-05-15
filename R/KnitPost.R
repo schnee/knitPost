@@ -2,13 +2,14 @@
 #'  
 #' Code modified from https://github.com/jfisher-usgs/jfisher-usgs.github.com/blob/master/R/KnitPost.R
 #' Also includes ideas from https://github.com/supstat/vistat/blob/gh-pages/_bin/knit
+#' @export
 #' @examples
-#' \dontrun{library(devtools); install_github('KnitPost', 'cpsievert')}
-#' library(KnitPost)
+#' \dontrun{library(devtools); install_github('knitPost', 'cpsievert')}
+#' library(knitPost)
 #' setwd("~/Desktop/github/local/cpsievert.github.com/")
-#' KnitPost("2013-05-15-hello-jekyll.Rmd")
+#' knitPost("2013-05-15-hello-jekyll.Rmd")
 
-KnitPost <- function(post="2013-05-15-hello-jekyll.Rmd", baseUrl="/") {
+knitPost <- function(post="2013-05-15-hello-jekyll.Rmd", baseUrl="http://cpsievert.github.com/") {
   sourcePath <- file.path(getwd(), "_source", post)
   opts_knit$set(base.url=baseUrl)
   base <- sub("\\.[Rr]md$", "", basename(sourcePath))
@@ -16,7 +17,7 @@ KnitPost <- function(post="2013-05-15-hello-jekyll.Rmd", baseUrl="/") {
   opts_chunk$set(fig.path=fig.path)
   opts_chunk$set(fig.cap="center")
   render_jekyll()
-  knit(input, paste('_posts/', base, '.md', sep = ''), envir=parent.frame())
+  knit(sourcePath, paste('_posts/', base, '.md', sep = ''), envir=parent.frame())
 }
 
 
